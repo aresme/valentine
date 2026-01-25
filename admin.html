@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Valentine's Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin.css?v=1">
+</head>
+
+<body>
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-card">
+            <div class="login-icon">💝</div>
+            <h1>Admin Access</h1>
+            <p>Enter password to continue</p>
+            <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
+            <button id="loginBtn" onclick="attemptLogin()">Login</button>
+            <p class="error-msg" id="errorMsg"></p>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel" style="display: none;">
+        <header>
+            <h1>💕 Valentine's Admin</h1>
+            <div class="header-actions">
+                <span class="status-indicator online"></span>
+                <span id="connectionStatus">Connected</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="totalVisitors">0</span>
+                    <span class="stat-label">Total Visitors</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💌</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="totalLinks">0</span>
+                    <span class="stat-label">Active Links</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🚫</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="blockedCount">0</span>
+                    <span class="stat-label">Blocked</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="custom-links-section">
+            <div class="section-header">
+                <h2>💌 Create Valentine's Link</h2>
+            </div>
+            <div class="create-link-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Recipient Name</label>
+                        <input type="text" id="clientName" placeholder="e.g. Sarah">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Name (Signature)</label>
+                        <input type="text" id="senderName" placeholder="e.g. John" value="Your Love">
+                    </div>
+                </div>
+
+                <!-- Theme Selector -->
+                <div class="form-group">
+                    <label>Theme Color</label>
+                    <div class="theme-selector" id="themeSelector">
+                        <button type="button" class="theme-btn active" data-theme="rose"
+                            style="--theme-color: #E91E63">🌹 Rose</button>
+                        <button type="button" class="theme-btn" data-theme="sunset" style="--theme-color: #FF6B6B">🌅
+                            Sunset</button>
+                        <button type="button" class="theme-btn" data-theme="midnight" style="--theme-color: #6B5B95">🌙
+                            Midnight</button>
+                        <button type="button" class="theme-btn" data-theme="champagne" style="--theme-color: #FFD700">🥂
+                            Champagne</button>
+                        <button type="button" class="theme-btn" data-theme="classicRed"
+                            style="--theme-color: #DC143C">❤️ Classic</button>
+                        <button type="button" class="theme-btn" data-theme="darkRomance"
+                            style="--theme-color: #8B0A50">🖤 Dark</button>
+                    </div>
+                </div>
+
+                <!-- Message Template -->
+                <div class="form-group">
+                    <label>Message Template</label>
+                    <select id="messageTemplate" onchange="applyTemplate()">
+                        <option value="">-- Select a template --</option>
+                        <option value="romantic">💕 Romantic</option>
+                        <option value="playful">😘 Playful</option>
+                        <option value="heartfelt">💖 Heartfelt</option>
+                        <option value="poetic">📝 Poetic</option>
+                        <option value="short">💝 Short & Sweet</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Love Letter Message</label>
+                    <textarea id="clientMessage" rows="5" placeholder="Write your romantic message..."></textarea>
+                </div>
+
+                <!-- Love Reasons -->
+                <div class="form-group">
+                    <label>Jar of Love - Reasons (one per line)</label>
+                    <textarea id="loveReasons" rows="4"
+                        placeholder="💕 Your smile lights up my world&#10;💖 You make me laugh every day&#10;💗 Your kindness inspires me"></textarea>
+                </div>
+
+                <!-- Custom Music -->
+                <div class="form-group">
+                    <label>Our Song (YouTube URL)</label>
+                    <input type="text" id="customMusicUrl" placeholder="https://youtu.be/...">
+                    <span class="input-hint">Paste a YouTube link for the "Our Song" page</span>
+                </div>
+
+                <!-- Relationship Start Date -->
+                <div class="form-group">
+                    <label>Relationship Start Date (for countdown)</label>
+                    <input type="date" id="startDate">
+                </div>
+
+                <!-- Photo Upload -->
+                <div class="form-group">
+                    <label>Memory Lane Photos (Max 6)</label>
+                    <div class="photo-upload-area" id="photoUploadArea">
+                        <div class="upload-placeholder" id="uploadPlaceholder">
+                            <span class="upload-icon">📸</span>
+                            <span>Drag photos here or click to upload</span>
+                            <span class="upload-hint">JPG, PNG up to 5MB each</span>
+                        </div>
+                        <input type="file" id="photoInput" accept="image/*" multiple hidden>
+                    </div>
+                    <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span id="progressText">Uploading...</span>
+                    </div>
+                </div>
+
+                <!-- Love Coupons -->
+                <div class="form-group">
+                    <label>Love Coupons (customize or leave default)</label>
+                    <div class="coupons-editor" id="couponsEditor">
+                        <div class="coupon-input"><input type="text" placeholder="🍽️ Dinner Date"
+                                value="🍽️ Dinner Date - A romantic dinner, just us two"></div>
+                        <div class="coupon-input"><input type="text" placeholder="🎬 Movie Night"
+                                value="🎬 Movie Night - Your pick, my snuggles"></div>
+                        <div class="coupon-input"><input type="text" placeholder="💆 Massage"
+                                value="💆 Massage Time - A relaxing back massage"></div>
+                        <div class="coupon-input"><input type="text" placeholder="🥞 Breakfast"
+                                value="🥞 Breakfast in Bed - Wake up to your favorites"></div>
+                        <div class="coupon-input"><input type="text" placeholder="🚶 Walk"
+                                value="🚶 Romantic Walk - Hand in hand, anywhere"></div>
+                        <div class="coupon-input"><input type="text" placeholder="🌟 Wish"
+                                value="🌟 Wish Granted - One wish, whatever you want"></div>
+                    </div>
+                </div>
+
+                <button class="create-btn" onclick="createCustomLink()">Generate Valentine's Link 💕</button>
+
+                <div id="generatedLinkContainer" style="display: none; margin-top: 1.5rem;">
+                    <label>Share this link with your love:</label>
+                    <div class="link-box">
+                        <input type="text" id="generatedLink" readonly>
+                        <button onclick="copyLink()">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 3rem;">
+                <h2>Active Links</h2>
+                <button onclick="refreshLinks()" class="icon-btn">🔄</button>
+            </div>
+            <div class="links-list" id="linksList">
+                <div class="loading">Loading links...</div>
+            </div>
+        </div>
+
+        <div class="visitors-section" style="margin-top: 3rem;">
+            <div class="section-header">
+                <h2>Visitors</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="online">Online</button>
+                    <button class="filter-tab" data-filter="blocked">Blocked</button>
+                </div>
+            </div>
+            <div class="visitors-list" id="visitorsList">
+                <div class="loading">Loading visitors...</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js?v=1"></script>
+    <script>
+        const ADMIN_PASSWORD = 'valentine2026';
+
+        function attemptLogin() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                sessionStorage.setItem('valentine_admin_auth', 'true');
+                window.dispatchEvent(new Event('adminAuthenticated'));
+            } else {
+                document.getElementById('errorMsg').textContent = 'Incorrect password';
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('valentine_admin_auth');
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        if (sessionStorage.getItem('valentine_admin_auth') === 'true') {
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            setTimeout(() => window.dispatchEvent(new Event('adminAuthenticated')), 100);
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') attemptLogin();
+        });
+    </script>
+</body>
+
+</html>

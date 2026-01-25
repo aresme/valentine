@@ -1,0 +1,32 @@
+{
+    "rules": {
+        "valentine_visitors": {
+            ".read": true,
+            ".write": true,
+            "$visitorId": {
+                ".validate": "newData.hasChildren(['id', 'ip', 'lastSeen'])",
+                "blocked": {
+                    ".write": false
+                }
+            }
+        },
+        "valentine_blocked_ips": {
+            ".read": true,
+            ".write": false
+        },
+        "valentine_links": {
+            ".read": true,
+            ".write": false,
+            "$linkId": {
+                "visits": {
+                    ".write": true,
+                    ".validate": "newData.isNumber() && newData.val() >= data.val()"
+                }
+            }
+        },
+        "valentine_admin": {
+            ".read": false,
+            ".write": false
+        }
+    }
+}

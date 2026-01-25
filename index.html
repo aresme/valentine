@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day 💕</title>
+    <meta name="description" content="A special Valentine's message just for you">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1">
+    <script src="confetti.js"></script>
+</head>
+
+<body>
+    <!-- Blocked Overlay -->
+    <div class="blocked-overlay" id="blockedOverlay" style="display: none;">
+        <div class="blocked-content">
+            <div class="blocked-icon">🚫</div>
+            <h1>Access Denied</h1>
+            <p>Sorry, you don't have permission to view this page.</p>
+        </div>
+    </div>
+
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Page 1: Welcome -->
+    <section class="page active" id="page1">
+        <div class="content">
+            <div class="love-icon fade-in">💕</div>
+            <h2 class="cursive fade-in delay-1">My Dearest</h2>
+            <h1 class="title fade-in delay-2"><span class="name-sparkle">My Love</span></h1>
+            <p class="subtitle fade-in delay-3">I have something special for you...</p>
+            <div class="buttons fade-in delay-4">
+                <button class="btn btn-primary" onclick="goToPage('page3')">OPEN MY HEART 💝</button>
+                <button class="btn btn-secondary" onclick="goToPage('page2')">NOT NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Promise Page (if No) -->
+    <section class="page" id="page2">
+        <div class="broken-hearts">
+            <div class="broken-heart" style="top: 10%; left: 15%;">💔</div>
+            <div class="broken-heart sad" style="top: 15%; left: 50%;">🥺</div>
+            <div class="broken-heart" style="top: 10%; right: 15%;">💔</div>
+            <div class="broken-heart" style="bottom: 20%; left: 20%;">💔</div>
+            <div class="broken-heart" style="bottom: 25%; right: 20%;">💔</div>
+        </div>
+        <div class="content">
+            <h1 class="title">Please don't break my heart...</h1>
+            <p class="subtitle">I promise it will be worth it 🥺</p>
+            <button class="btn btn-primary" onclick="goToPage('page3')">OKAY, I'LL LOOK 💕</button>
+            <button class="btn-back" onclick="goToPage('page1')">← Back</button>
+        </div>
+    </section>
+
+    <!-- Page 3: Gifts Selection -->
+    <section class="page" id="page3">
+        <div class="content">
+            <h1 class="title cursive">My Valentine's Gifts To You</h1>
+            <p class="subtitle">Each one made with love 💕</p>
+            <div class="gifts-grid">
+                <div class="gift-card" onclick="goToPage('page4')">
+                    <div class="gift-icon">🫙</div>
+                    <span>Jar of Love</span>
+                </div>
+                <div class="gift-card" onclick="goToPage('page7')">
+                    <div class="gift-icon">📸</div>
+                    <span>Our Journey</span>
+                </div>
+                <div class="gift-card" onclick="goToPage('page5')">
+                    <div class="gift-icon">🎵</div>
+                    <span>Our Song</span>
+                </div>
+                <div class="gift-card" onclick="goToPage('page6')">
+                    <div class="gift-icon">💌</div>
+                    <span>Love Letter</span>
+                </div>
+                <div class="gift-card" onclick="goToPage('page8')">
+                    <div class="gift-icon">🎟️</div>
+                    <span>Love Coupons</span>
+                </div>
+                <div class="gift-card" onclick="goToPage('page9')">
+                    <div class="gift-icon">🌹</div>
+                    <span>100 Roses</span>
+                </div>
+                <div class="gift-card" onclick="goToPage('page10')">
+                    <div class="gift-icon">⏰</div>
+                    <span>Our Time</span>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToPage('page1')">← Back</button>
+        </div>
+    </section>
+
+    <!-- Page 4: Jar of Love -->
+    <section class="page" id="page4">
+        <div class="content jar-page">
+            <h1 class="title cursive">JAR OF LOVE</h1>
+            <p class="subtitle cursive">Reasons why I love you ✨</p>
+            <div class="jar-container">
+                <div class="jar">
+                    <div class="jar-body">
+                        <div class="heart-float">💕</div>
+                        <div class="heart-float">💖</div>
+                        <div class="heart-float">💗</div>
+                        <div class="heart-float">💝</div>
+                    </div>
+                </div>
+                <div class="reasons" id="loveReasons">
+                    <div class="reason-card" style="--delay: 0.1s">💕 Your smile lights up my entire world</div>
+                    <div class="reason-card" style="--delay: 0.2s">💖 Your laughter is my favorite sound</div>
+                    <div class="reason-card" style="--delay: 0.3s">💗 You make every moment magical</div>
+                    <div class="reason-card" style="--delay: 0.4s">💝 You're my best friend and soulmate</div>
+                    <div class="reason-card" style="--delay: 0.5s">✨ You make me want to be better</div>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToPage('page3')">← Back</button>
+        </div>
+    </section>
+
+    <!-- Page 5: Our Song -->
+    <section class="page" id="page5">
+        <div class="content">
+            <h1 class="title cursive">OUR SONG</h1>
+            <p class="subtitle">This reminds me of us 💕</p>
+            <div class="video-container">
+                <iframe id="youtubePlayer" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1"
+                    title="Our Song" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="play-hint">🎵 Press play and close your eyes</p>
+            <button class="btn-back" onclick="goToPage('page3')">← Back</button>
+        </div>
+    </section>
+
+    <!-- Page 6: Love Letter -->
+    <section class="page" id="page6">
+        <div class="content">
+            <h1 class="title cursive">MY LOVE LETTER TO YOU</h1>
+            <div class="letter-card">
+                <div class="letter-border">
+                    <div class="letter-seal">💝</div>
+                    <h2 id="letterTitle">My Dearest Love ❤️</h2>
+                    <div id="letterContent">
+                        <p>
+                            Every moment with you feels like a beautiful dream I never want to wake up from.
+                            You've painted my world with colors I never knew existed, and filled my heart
+                            with a love so deep, words fail to capture its true essence.
+                        </p>
+                        <p>
+                            Thank you for being my sunshine on cloudy days, my comfort in times of need,
+                            and my partner in every adventure life brings. You are my everything.
+                        </p>
+                        <p>
+                            This Valentine's Day and every day, I choose you. I love you more than
+                            yesterday, less than tomorrow, and with all that I am.
+                        </p>
+                    </div>
+                    <div class="letter-signature">Forever Yours 💕</div>
+                    <div class="signature-name" id="senderSignature">~ Your Love</div>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToPage('page3')">← Back</button>
+        </div>
+    </section>
+
+    <!-- Page 7: Memory Lane / Our Journey -->
+    <section class="page" id="page7">
+        <div class="content full-width">
+            <h1 class="title cursive" style="margin-bottom: 1rem;">OUR JOURNEY</h1>
+            <p class="subtitle">Moments that took my breath away ✨</p>
+            <div id="gallery-container">
+                <div class="polaroid" onclick="togglePolaroid(this)">
+                    <div class="polaroid-inner">
+                        <div class="placeholder-photo">📸</div>
+                        <div class="caption">First moment together 💕</div>
+                    </div>
+                </div>
+                <div class="polaroid" onclick="togglePolaroid(this)">
+                    <div class="polaroid-inner">
+                        <div class="placeholder-photo">📸</div>
+                        <div class="caption">Our adventure ❤️</div>
+                    </div>
+                </div>
+                <div class="polaroid" onclick="togglePolaroid(this)">
+                    <div class="polaroid-inner">
+                        <div class="placeholder-photo">📸</div>
+                        <div class="caption">Pure happiness ✨</div>
+                    </div>
+                </div>
+                <div class="polaroid" onclick="togglePolaroid(this)">
+                    <div class="polaroid-inner">
+                        <div class="placeholder-photo">📸</div>
+                        <div class="caption">Forever & Always 💫</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToPage('page3')"
+                style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100;">←
+                Back</button>
+        </div>
+    </section>
+
+    <!-- Page 8: Love Coupons -->
+    <section class="page" id="page8">
+        <div class="content">
+            <h1 class="title cursive">LOVE COUPONS</h1>
+            <p class="subtitle">Redeemable romantic gestures 💝</p>
+            <div class="coupons-grid" id="couponsContainer">
+                <div class="coupon-card" onclick="redeemCoupon(this)">
+                    <div class="coupon-icon">🍽️</div>
+                    <div class="coupon-title">Dinner Date</div>
+                    <div class="coupon-desc">A romantic dinner, just us two</div>
+                    <div class="coupon-redeem">Tap to Redeem</div>
+                </div>
+                <div class="coupon-card" onclick="redeemCoupon(this)">
+                    <div class="coupon-icon">🎬</div>
+                    <div class="coupon-title">Movie Night</div>
+                    <div class="coupon-desc">Your pick, my snuggles</div>
+                    <div class="coupon-redeem">Tap to Redeem</div>
+                </div>
+                <div class="coupon-card" onclick="redeemCoupon(this)">
+                    <div class="coupon-icon">💆</div>
+                    <div class="coupon-title">Massage Time</div>
+                    <div class="coupon-desc">A relaxing back massage</div>
+                    <div class="coupon-redeem">Tap to Redeem</div>
+                </div>
+                <div class="coupon-card" onclick="redeemCoupon(this)">
+                    <div class="coupon-icon">🥞</div>
+                    <div class="coupon-title">Breakfast in Bed</div>
+                    <div class="coupon-desc">Wake up to your favorites</div>
+                    <div class="coupon-redeem">Tap to Redeem</div>
+                </div>
+                <div class="coupon-card" onclick="redeemCoupon(this)">
+                    <div class="coupon-icon">🚶</div>
+                    <div class="coupon-title">Romantic Walk</div>
+                    <div class="coupon-desc">Hand in hand, anywhere</div>
+                    <div class="coupon-redeem">Tap to Redeem</div>
+                </div>
+                <div class="coupon-card" onclick="redeemCoupon(this)">
+                    <div class="coupon-icon">🌟</div>
+                    <div class="coupon-title">Wish Granted</div>
+                    <div class="coupon-desc">One wish, whatever you want</div>
+                    <div class="coupon-redeem">Tap to Redeem</div>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToPage('page3')">← Back</button>
+        </div>
+    </section>
+
+    <!-- Page 9: Rose Counter -->
+    <section class="page" id="page9">
+        <div class="content rose-page">
+            <h1 class="title cursive">SENDING YOU ROSES</h1>
+            <p class="subtitle">One rose for every beat of my heart 💗</p>
+            <div class="rose-counter-container">
+                <div class="rose-display">
+                    <span id="roseCount">0</span>
+                    <span class="rose-emoji">🌹</span>
+                </div>
+                <p class="rose-message" id="roseMessage">Watch the roses bloom...</p>
+            </div>
+            <button class="btn btn-primary" id="sendRosesBtn" onclick="startRoseAnimation()">SEND MY ROSES
+                🌹</button>
+            <button class="btn-back" onclick="goToPage('page3')">← Back</button>
+        </div>
+    </section>
+
+    <!-- Page 10: Countdown Timer -->
+    <section class="page" id="page10">
+        <div class="content">
+            <h1 class="title cursive">OUR TIME TOGETHER</h1>
+            <div class="countdown-container">
+                <div class="countdown-section" id="valentineCountdown">
+                    <h3>💝 Until Valentine's Day</h3>
+                    <div class="countdown-grid">
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="vDays">00</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="vHours">00</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="vMinutes">00</span>
+                            <span class="countdown-label">Minutes</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="vSeconds">00</span>
+                            <span class="countdown-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="countdown-divider">💕</div>
+                <div class="countdown-section" id="togetherCountdown">
+                    <h3>💑 Days We've Been Together</h3>
+                    <div class="countdown-grid">
+                        <div class="countdown-item large">
+                            <span class="countdown-value" id="daysTogether">0</span>
+                            <span class="countdown-label">Days of Love</span>
+                        </div>
+                    </div>
+                    <p class="together-message" id="togetherMessage">Every day with you is a blessing</p>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToPage('page3')">← Back</button>
+        </div>
+    </section>
+
+    <script src="hearts.js"></script>
+    <script src="script.js"></script>
+    <script type="module">
+        import { registerVisitor, checkBlocked, getCustomLink } from './firebase-config.js';
+
+        // Register this visitor
+        registerVisitor();
+
+        // Theme color mappings
+        const THEME_COLORS = {
+            rose: { primary: '#E91E63', dark: '#AD1457', light: '#F8BBD9', glow: 'rgba(233, 30, 99, 0.6)' },
+            sunset: { primary: '#FF6B6B', dark: '#EE5253', light: '#FFCCCC', glow: 'rgba(255, 107, 107, 0.6)' },
+            midnight: { primary: '#6B5B95', dark: '#4A3F6B', light: '#B8A9C9', glow: 'rgba(107, 91, 149, 0.6)' },
+            champagne: { primary: '#FFD700', dark: '#DAA520', light: '#FFF8DC', glow: 'rgba(255, 215, 0, 0.6)' },
+            classicRed: { primary: '#DC143C', dark: '#8B0000', light: '#FFB6C1', glow: 'rgba(220, 20, 60, 0.6)' },
+            darkRomance: { primary: '#8B0A50', dark: '#4A0728', light: '#DDA0DD', glow: 'rgba(139, 10, 80, 0.6)' }
+        };
+
+        // Default captions
+        const defaultCaptions = [
+            'First moment together 💕',
+            'Our adventure ❤️',
+            'Pure happiness ✨',
+            'Forever & Always 💫'
+        ];
+
+        // Apply theme colors
+        function applyTheme(themeName) {
+            const theme = THEME_COLORS[themeName] || THEME_COLORS.rose;
+            document.documentElement.style.setProperty('--primary-color', theme.primary);
+            document.documentElement.style.setProperty('--dark-color', theme.dark);
+            document.documentElement.style.setProperty('--light-color', theme.light);
+            document.documentElement.style.setProperty('--glow-color', theme.glow);
+
+            if (window.confetti) {
+                window.confetti.setColors([theme.primary, theme.light, theme.dark, '#FFD700', '#FFFFFF']);
+            }
+        }
+
+        // Update Music Player (YouTube or Spotify)
+        function updateMusicUrl(url, type) {
+            if (!url) return;
+            const container = document.querySelector('.video-container');
+
+            if (type === 'spotify' || url.includes('spotify.com')) {
+                container.innerHTML = `
+                    <iframe style="border-radius:12px" 
+                        src="${url}" 
+                        width="100%" height="152" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy">
+                    </iframe>`;
+                container.style.aspectRatio = 'auto';
+                container.style.height = '152px';
+            } else {
+                // Default to YouTube
+                let videoId = '';
+                if (url.includes('youtu.be/')) {
+                    videoId = url.split('youtu.be/')[1].split('?')[0];
+                } else if (url.includes('youtube.com/watch')) {
+                    videoId = new URL(url).searchParams.get('v');
+                } else if (url.includes('youtube.com/embed/')) {
+                    videoId = url.split('embed/')[1].split('?')[0];
+                }
+
+                if (videoId) {
+                    container.innerHTML = `
+                        <iframe id="youtubePlayer" 
+                            src="https://www.youtube.com/embed/${videoId}?enablejsapi=1"
+                            title="Our Song" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>`;
+                    container.style.aspectRatio = '16/9';
+                    container.style.height = 'auto';
+                }
+            }
+        }
+
+        // Render photos to gallery
+        function renderPhotosToGallery(photos) {
+            const gallery = document.getElementById('gallery-container');
+            gallery.innerHTML = photos.map((photo, index) => `
+                <div class="polaroid" onclick="togglePolaroid(this)">
+                    <div class="polaroid-inner">
+                        <img src="${photo.url}" alt="Memory ${index + 1}">
+                        <div class="caption">${photo.caption || defaultCaptions[index] || '💕'}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render love reasons
+        function renderLoveReasons(reasons) {
+            const container = document.getElementById('loveReasons');
+            container.innerHTML = reasons.map((reason, index) => `
+                <div class="reason-card" style="--delay: ${0.1 + index * 0.1}s">${reason}</div>
+            `).join('');
+        }
+
+        // Render love coupons
+        function renderCoupons(coupons) {
+            const container = document.getElementById('couponsContainer');
+            container.innerHTML = coupons.map(coupon => `
+                <div class="coupon-card ${coupon.redeemed ? 'redeemed' : ''}" onclick="redeemCoupon(this)" data-id="${coupon.id || ''}">
+                    <div class="coupon-icon">${coupon.icon}</div>
+                    <div class="coupon-title">${coupon.title}</div>
+                    <div class="coupon-desc">${coupon.description}</div>
+                    <div class="coupon-redeem">${coupon.redeemed ? '✅ Redeemed' : 'Tap to Redeem'}</div>
+                </div>
+            `).join('');
+        }
+
+        // Load custom content
+        async function loadCustomContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const msgId = urlParams.get('msg');
+
+            if (msgId) {
+                const customData = await getCustomLink(msgId);
+                if (customData) {
+                    // Apply theme
+                    if (customData.theme) {
+                        applyTheme(customData.theme);
+                    }
+
+                    // Update music
+                    if (customData.musicUrl) {
+                        updateMusicUrl(customData.musicUrl, customData.musicType);
+                    }
+
+                    // Update name
+                    const nameElement = document.querySelector('.name-sparkle');
+                    if (nameElement) nameElement.textContent = customData.name;
+
+                    // Update welcome
+                    const welcomeElement = document.querySelector('h2.cursive.fade-in');
+                    if (welcomeElement) welcomeElement.textContent = `My Dearest`;
+
+                    // Update letter
+                    const letterTitle = document.getElementById('letterTitle');
+                    if (letterTitle) letterTitle.textContent = `My Dearest ${customData.name} ❤️`;
+
+                    const letterContent = document.getElementById('letterContent');
+                    if (letterContent && customData.message) {
+                        letterContent.innerHTML = `<p style="white-space: pre-line;">${customData.message}</p>`;
+                    }
+
+                    const senderSig = document.getElementById('senderSignature');
+                    if (senderSig) senderSig.textContent = `~ ${customData.sender || 'Your Love'}`;
+
+                    // Update title
+                    document.title = `Happy Valentine's Day ${customData.name}! 💕`;
+
+                    // Update photos
+                    if (customData.photos && customData.photos.length > 0) {
+                        renderPhotosToGallery(customData.photos);
+                    }
+
+                    // Update love reasons
+                    if (customData.loveReasons && customData.loveReasons.length > 0) {
+                        renderLoveReasons(customData.loveReasons);
+                    }
+
+                    // Update coupons
+                    if (customData.coupons && customData.coupons.length > 0) {
+                        renderCoupons(customData.coupons);
+                    }
+
+                    // Update start date for countdown
+                    if (customData.startDate) {
+                        window.relationshipStartDate = new Date(customData.startDate);
+                    }
+                }
+            }
+        }
+
+        loadCustomContent();
+
+        // Trigger confetti on page load
+        setTimeout(() => {
+            if (window.startConfettiRain) {
+                window.startConfettiRain(2500, 4);
+            }
+        }, 500);
+
+        // Add confetti to primary button
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.btn-primary').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (window.triggerConfetti) {
+                        window.triggerConfetti(e.clientX, e.clientY, 60);
+                    }
+                });
+            });
+        });
+
+        // Check if blocked
+        checkBlocked((isBlocked) => {
+            const overlay = document.getElementById('blockedOverlay');
+            if (isBlocked) {
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+
+</html>
